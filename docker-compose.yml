@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  routinetracker.server:
+    image: ${DOCKER_REGISTRY-}routinetrackerserver
+    build:
+      context: .
+      dockerfile: RoutineTracker.Server/Dockerfile
+  routinetracker.db:
+    image: postgres:latest
+    restart: always
+    hostname: routinetracker_db
+    ports:
+    - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: kaoru7512
+
